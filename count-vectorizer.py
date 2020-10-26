@@ -3,7 +3,7 @@ class CountVectorizer:
         self.vocabulary = []
 
     def fit_transform(self, corpus):
-        words_in_lines = [[word.lower() for word in line.split()] for line in corpus]
+        words_in_lines = [line.lower().split() for line in corpus]
         all_words = [word for line in words_in_lines for word in line]
         self.vocabulary = list(dict.fromkeys(all_words))
         return [[line.count(vocabulary_word) for vocabulary_word in self.vocabulary] for line in words_in_lines]
